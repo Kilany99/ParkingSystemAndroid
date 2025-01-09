@@ -56,4 +56,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0") // Add OkHttp dependency
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") // Add Retrofit dependency
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Add Gson converter dependency (if using Gson)
+
 }
