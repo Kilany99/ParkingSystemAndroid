@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.parkingsystemandroid.MainActivity
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.data.model.dto.LoginDto
+import com.example.parkingsystemandroid.ui.auth.fragments.ForgotPasswordFragment
 import com.example.parkingsystemandroid.utils.TokenManager
 import com.example.parkingsystemandroid.viewmodel.AuthResponseState
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
@@ -24,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var textViewRegister: TextView
+    private lateinit var textViewForgotPassword: TextView
+    private var isFragmentDisplayed = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -47,6 +50,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }
+        textViewForgotPassword.setOnClickListener {
+            // Display the ForgotPasswordFragment
+            showForgotPasswordFragment()
+        }
+
 
         observeViewModel()
     }
@@ -69,4 +77,26 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+    private fun showForgotPasswordFragment() {
+        if (!isFragmentDisplayed) {
+            val fragment = ForgotPasswordFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+            isFragmentDisplayed = true
+        }
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+            isFragmentDisplayed = false
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+
 }

@@ -11,6 +11,8 @@ import kotlinx.coroutines.launch
 class AuthViewModel : ViewModel() {
 
     private val authRepository = AuthRepository()
+    val forgotPasswordResponse = MutableLiveData<ResponseState>()
+    val resetPasswordResponse = MutableLiveData<ResponseState>()
 
     val authResponse = MutableLiveData<AuthResponseState>()
 
@@ -43,9 +45,50 @@ class AuthViewModel : ViewModel() {
             }
         }
     }
+
+
+
+
+    fun resetPassword(resetToken: String, newPassword: String) {
+        viewModelScope.launch {
+            try {
+                val message = authRepository.resetPassword(resetToken, newPassword)
+                if (message != null) {
+                    resetPasswordResponse.postValue(ResponseState.Success(message))
+                } else {
+                    resetPasswordResponse.postValue(ResponseState.Error("An error occurred"))
+                }
+            } catch (e: Exception) {
+                resetPasswordResponse.postValue(ResponseState.Error(e.message ?: "An error occurred"))
+            }
+        }
+    }
+
+
+    fun forgotPassword(email: String) {
+        viewModelScope.launch {
+            try {
+                val message = authRepository.forgotPassword(email)
+                if (message != null) {
+                    forgotPasswordResponse.postValue(ResponseState.Success(message))
+                } else {
+                    forgotPasswordResponse.postValue(ResponseState.Error("An error occurred"))
+                }
+            } catch (e: Exception) {
+                forgotPasswordResponse.postValue(ResponseState.Error(e.message ?: "An error occurred"))
+            }
+        }
+    }
+
+
+
 }
 
 sealed class AuthResponseState {
     data class Success(val data: Any) : AuthResponseState()
     data class Error(val message: String) : AuthResponseState()
+}
+sealed class ResponseState {
+    data class Success(val message: String) : ResponseState()
+    data class Error(val message: String) : ResponseState()
 }

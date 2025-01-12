@@ -15,6 +15,12 @@ interface ApiService {
     @POST("Auth/login")
     suspend fun login(@Body loginDto: LoginDto): Response<AuthResponseDto>
 
+    @POST("Auth/forgot-password")
+    suspend fun forgotPassword(@Body forgotPasswordDto: ForgotPasswordDto): Response<ApiResponse>
+
+    @POST("Auth/reset-password")
+    suspend fun resetPassword(@Body resetPasswordDto: ResetPasswordDto): Response<ApiResponse>
+
     // ----- UserController -----
 
     @GET("User/me")
