@@ -1,7 +1,5 @@
 package com.example.parkingsystemandroid.data.network.api
 
-// network/api/ApiService.kt
-
 import com.example.parkingsystemandroid.data.model.*
 import com.example.parkingsystemandroid.data.model.dto.*
 import retrofit2.Response

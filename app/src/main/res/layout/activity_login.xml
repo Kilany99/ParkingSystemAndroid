@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RadioButton
+        android:layout_width="50dp"
+        android:layout_height="300dp"/>
+    <!-- Email Field -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        android:height="100dp"
+        android:width="300dp"
+        android:hint="Email"
+        tools:ignore="HardcodedText" />
+
+    <!-- Password Field -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:height="100dp"
+        android:width="300dp"
+        android:autofillHints="password"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:ignore="HardcodedText" />
+
+    <!-- Login Button -->
+
+    <!-- Register Link -->
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Don't have an account? Register"
+        android:textColor="#0000FF"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

@@ -12,11 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.parkingsystemandroid.ui.theme.ParkingSystemAndroidTheme
+import com.example.parkingsystemandroid.utils.TokenManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        TokenManager.init(this)
         setContent {
             ParkingSystemAndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

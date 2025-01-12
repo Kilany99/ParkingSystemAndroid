@@ -18,7 +18,7 @@ object TokenManager {
             context,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+        ) as EncryptedSharedPreferences
     }
 
     var token: String?
