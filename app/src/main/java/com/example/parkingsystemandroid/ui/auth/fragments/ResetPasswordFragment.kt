@@ -10,8 +10,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.databinding.FragmentForgotPasswordBinding
+import com.example.parkingsystemandroid.databinding.FragmentResetPasswordBinding
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
 import com.example.parkingsystemandroid.viewmodel.ResponseState
 
@@ -19,17 +21,14 @@ import com.example.parkingsystemandroid.viewmodel.ResponseState
 class ResetPasswordFragment : Fragment() {
 
     private lateinit var viewModel: AuthViewModel
-    private lateinit var buttonResetPassword : Button
-    private lateinit var editTextResetToken : EditText
-    private lateinit var editTextNewPassword : EditText
-    private lateinit var editTextConfirmPassword : EditText
-    private var _binding: FragmentForgotPasswordBinding? = null
+
+    private var _binding: FragmentResetPasswordBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        _binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,10 +36,10 @@ class ResetPasswordFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(AuthViewModel::class.java)
 
 
-        buttonResetPassword.setOnClickListener {
-            val resetToken = editTextResetToken.text.toString().trim()
-            val newPassword = editTextNewPassword.text.toString()
-            val confirmPassword = editTextConfirmPassword.text.toString()
+        binding.buttonResetPassword.setOnClickListener {
+            val resetToken = binding.editTextResetToken.text.toString().trim()
+            val newPassword = binding.editTextNewPassword.text.toString()
+            val confirmPassword = binding.editTextConfirmPassword.text.toString()
 
             if (resetToken.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
@@ -64,8 +63,7 @@ class ResetPasswordFragment : Fragment() {
                 is ResponseState.Success -> {
                     Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
                     // Navigate back to LoginFragment
-                    requireActivity().onBackPressed()
-                }
+                    findNavController().popBackStack()                }
                 is ResponseState.Error -> {
                     Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
                 }

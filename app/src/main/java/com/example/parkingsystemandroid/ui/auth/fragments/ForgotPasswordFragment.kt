@@ -20,8 +20,7 @@ import com.example.parkingsystemandroid.viewmodel.ResponseState
 class ForgotPasswordFragment : Fragment() {
 
     private lateinit var viewModel: AuthViewModel
-    private lateinit var buttonSubmit: Button
-    private lateinit var editTextEmail: EditText
+
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -34,8 +33,8 @@ class ForgotPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
-        buttonSubmit.setOnClickListener {
-            val email = editTextEmail.text.toString().trim()
+        binding.buttonSubmit.setOnClickListener {
+            val email = binding.editTextEmail.text.toString().trim()
             if (email.isNotEmpty()) {
                 viewModel.forgotPassword(email)
             } else {
@@ -47,7 +46,7 @@ class ForgotPasswordFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.forgotPasswordResponse.observe(viewLifecycleOwner) { state ->
+            viewModel.forgotPasswordResponse.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ResponseState.Success -> {
                     Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()

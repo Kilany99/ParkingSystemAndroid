@@ -36,6 +36,8 @@ class LoginActivity : AppCompatActivity() {
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
         textViewRegister = findViewById(R.id.textViewRegister)
+        textViewForgotPassword = findViewById(R.id.textViewForgotPassword)
+
         TokenManager.init(this)
 
         buttonLogin.setOnClickListener {
