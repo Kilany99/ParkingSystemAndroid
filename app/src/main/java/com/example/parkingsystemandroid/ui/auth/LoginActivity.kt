@@ -13,6 +13,7 @@ import com.example.parkingsystemandroid.MainActivity
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.data.model.dto.LoginDto
 import com.example.parkingsystemandroid.ui.auth.fragments.ForgotPasswordFragment
+import com.example.parkingsystemandroid.ui.car.CarListFragment
 import com.example.parkingsystemandroid.utils.TokenManager
 import com.example.parkingsystemandroid.viewmodel.AuthResponseState
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
@@ -57,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
             showForgotPasswordFragment()
         }
 
-
         observeViewModel()
     }
 
@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
                     // Login successful, navigate to the main activity
                     Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
                     // Start MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this,CarListFragment ::class.java)
                     startActivity(intent)
                     finish()
                 }

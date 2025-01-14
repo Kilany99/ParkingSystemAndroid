@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.example.parkingsystemandroid.ui.car.CarListFragment"
+        android:label="My Cars">
+        <action
+            android:id="@+id/action_carList_to_carForm"
+            app:destination="@id/carFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/carFormFragment"
+        android:name="com.example.parkingsystemandroid.ui.car.CarFormFragment"
+        android:label="Add/Edit Car">
+        <argument
+            android:name="car"
+            app:argType="com.yourapp.data.model.Car"
+            app:nullable="true" />
+    </fragment>
+</navigation>

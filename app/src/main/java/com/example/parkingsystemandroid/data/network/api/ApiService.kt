@@ -34,10 +34,10 @@ interface ApiService {
     suspend fun getMyCars(): Response<List<CarDto>>
 
     @POST("Car")
-    suspend fun addCar(@Body createCarDto: CarDto): Response<Car>
+    suspend fun addCar(@Body createCarDto: CreateCarDto): Response<CarDto>
 
     @PUT("Car/{id}")
-    suspend fun updateCar(@Path("id") id: Int, @Body updateCarDto: UpdateCarDto): Response<Car>
+    suspend fun updateCar(@Path("id") id: Int, @Body updateCarDto: UpdateCarDto): Response<CarDto>
 
     @DELETE("Car/{id}")
     suspend fun deleteCar(@Path("id") id: Int): Response<Void>

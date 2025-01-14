@@ -13,6 +13,8 @@ pluginManagement {
     plugins {
         id("com.android.application") version "7.0.0"  // Update as needed
         id("org.jetbrains.kotlin.android") version "1.5.0" // Update as needed
+        id ("androidx.navigation.safeargs.kotlin")
+
     }
 }
 dependencyResolutionManagement {
