@@ -40,18 +40,15 @@ class ResetPasswordFragment : Fragment() {
             val resetToken = binding.editTextResetToken.text.toString().trim()
             val newPassword = binding.editTextNewPassword.text.toString()
             val confirmPassword = binding.editTextConfirmPassword.text.toString()
-
-            if (resetToken.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            //validation
+            if (validateInputs(resetToken, newPassword, confirmPassword)) {
+                try {
+                    viewModel.resetPassword(resetToken, newPassword)
+                }catch (ex:Exception) {
+                    Toast.makeText(requireContext(), ex.message, Toast.LENGTH_LONG).show()
+                }
             }
 
-            if (newPassword != confirmPassword) {
-                Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            viewModel.resetPassword(resetToken, newPassword)
         }
 
         observeViewModel()
@@ -70,6 +67,25 @@ class ResetPasswordFragment : Fragment() {
             }
         }
     }
+
+    private fun validateInputs(
+        resetToken: String,
+        newPassword: String,
+        confirmPassword: String
+    ): Boolean {
+        if (resetToken.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        if (newPassword != confirmPassword) {
+            Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

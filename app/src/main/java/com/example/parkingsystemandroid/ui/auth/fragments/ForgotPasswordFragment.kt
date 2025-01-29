@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.databinding.FragmentForgotPasswordBinding
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
@@ -20,9 +21,10 @@ import com.example.parkingsystemandroid.viewmodel.ResponseState
 class ForgotPasswordFragment : Fragment() {
 
     private lateinit var viewModel: AuthViewModel
-
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,11 +64,11 @@ class ForgotPasswordFragment : Fragment() {
 
     private fun showResetPasswordFragment() {
         val resetPasswordFragment = ResetPasswordFragment()
-        // If not using the back stack
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, resetPasswordFragment)
+            .addToBackStack(null)
             .commit()
-            }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

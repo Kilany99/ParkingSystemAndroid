@@ -57,6 +57,14 @@ class RegisterActivity : AppCompatActivity() {
         observeViewModel()
     }
 
+    private fun validateInputs(email:String,password:String,name:String,phone:String): Boolean{
+        if(email.isEmpty()||password.isEmpty()||name.isEmpty()||phone.isEmpty()){
+            Toast.makeText(this,"Please fill in all fields",Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
     private fun observeViewModel() {
         viewModel.authResponse.observe(this) { state ->
             when (state) {
