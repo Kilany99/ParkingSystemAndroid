@@ -109,6 +109,7 @@ class LoginActivity : AppCompatActivity() {
         return true
 }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()

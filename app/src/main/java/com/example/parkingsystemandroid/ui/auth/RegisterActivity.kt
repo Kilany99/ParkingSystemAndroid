@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.data.model.dto.RegisterDto
+import com.example.parkingsystemandroid.databinding.ActivityLoginBinding
+import com.example.parkingsystemandroid.databinding.ActivityRegisterBinding
 import com.example.parkingsystemandroid.utils.TokenManager
 import com.example.parkingsystemandroid.viewmodel.AuthResponseState
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
@@ -25,10 +27,12 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var editTextName: EditText
     private lateinit var editTextPhone: EditText
     private lateinit var textViewLogin: TextView
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
 
         viewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
         buttonRegister =findViewById(R.id.buttonRegister)
@@ -38,25 +42,26 @@ class RegisterActivity : AppCompatActivity() {
         editTextName = findViewById(R.id.editTextName)
         textViewLogin = findViewById(R.id.textViewLogin)
         TokenManager.init(this)
-
-        buttonRegister.setOnClickListener {
+        setupClickListeners()
+        observeViewModel()
+    }
+    private fun setupClickListeners() {
+        binding.buttonRegister.setOnClickListener {
             val email = editTextEmail.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
             val name = editTextName.text.toString().trim()
             val phone = editTextPhone.text.toString().trim()
-
+            validateInputs(email,password,name,phone)
             val registerDto = RegisterDto(email, password, name, phone)
             viewModel.register(registerDto)
+
         }
 
-        textViewLogin.setOnClickListener {
+        binding.textViewLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
-
-        observeViewModel()
     }
-
     private fun validateInputs(email:String,password:String,name:String,phone:String): Boolean{
         if(email.isEmpty()||password.isEmpty()||name.isEmpty()||phone.isEmpty()){
             Toast.makeText(this,"Please fill in all fields",Toast.LENGTH_SHORT).show()

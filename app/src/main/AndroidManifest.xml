@@ -22,9 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".ui.auth.RegisterActivity"
-                  android:theme="@style/Theme.AppCompat.Light"
-        />
+        <activity android:name=".ui.auth.RegisterActivity" />
 
 
     </application>

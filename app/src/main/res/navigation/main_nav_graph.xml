@@ -1,0 +1,16 @@
+<!-- res/navigation/main_nav_graph.xml -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/carsFragment">
+
+    <!-- Cars Fragment -->
+    <fragment
+        android:id="@+id/carsFragment"
+        android:name="com.example.parkingsystemandroid.ui.car.CarsFragment"
+        android:label="My Cars">
+
+    </fragment>
+
+
+</navigation>

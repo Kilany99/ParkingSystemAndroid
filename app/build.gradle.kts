@@ -37,10 +37,15 @@ android {
     }
     buildFeatures {
         compose = true
+
     }
     viewBinding {
         enable = true
     }
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
