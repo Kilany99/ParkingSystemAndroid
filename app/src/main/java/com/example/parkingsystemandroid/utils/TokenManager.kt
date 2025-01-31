@@ -5,12 +5,17 @@ package com.example.parkingsystemandroid.utils
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.example.parkingsystemandroid.ParkingSystemApplication
 
 object TokenManager {
     private const val PREFS_FILENAME = "secure_prefs"
     private const val TOKEN_KEY = "TOKEN_KEY"
     private const val KEY_USER_ID = "user_id"
+    private const val KEY_USER_NAME = "user_name"
+    private const val KEY_USER_EMAIL = "user_email"
 
+    private val context: Context
+        get() = ParkingSystemApplication.appContext
 
     private lateinit var prefs: EncryptedSharedPreferences
 
@@ -33,6 +38,32 @@ object TokenManager {
         return prefs.getInt(KEY_USER_ID, -1)
 
     }
+
+    fun getUserName(): String? {
+        val prefs = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        return prefs.getString(KEY_USER_NAME, null)
+    }
+
+
+    fun getUserEmail(): String? {
+        val prefs = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        return prefs.getString(KEY_USER_EMAIL, null)
+    }
+    fun saveUserName(userName: String) {
+        val prefs = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        prefs.edit().putString(KEY_USER_NAME, userName).apply()
+    }
+
+    fun saveUserEmail(userEmail: String) {
+        val prefs = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        prefs.edit().putString(KEY_USER_EMAIL, userEmail).apply()
+    }
+
+    // Clear all user data on logout
+    fun clearUserData() {
+        val prefs = context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        prefs.edit().clear().apply()
+    }
     var token: String?
         get() = prefs.getString(TOKEN_KEY, null)
         set(value) = prefs.edit().putString(TOKEN_KEY, value).apply()
@@ -40,4 +71,5 @@ object TokenManager {
     fun clearToken() {
         prefs.edit().remove(TOKEN_KEY).apply()
     }
+
 }

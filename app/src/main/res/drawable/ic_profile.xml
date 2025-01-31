@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    tools:ignore="ExtraText">
+
+    <!-- Circle Background -->
+    <path
+        android:fillColor="#981313"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2z" />
+
+    <!-- Profile Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,16c-2.2,0 -4-1.8 -4-4s1.8-4 4-4s4,1.8 4,4s-1.8,4 -4,4zM12,2c1.66,0 3,1.34 3,3s-1.34,3 -3,3s-3,-1.34 -3,-3s1.34,-3 3,-3z" />
+</vector>

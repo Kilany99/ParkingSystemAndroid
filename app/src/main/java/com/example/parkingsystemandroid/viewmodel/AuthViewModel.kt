@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.parkingsystemandroid.data.model.dto.LoginDto
 import com.example.parkingsystemandroid.data.model.dto.RegisterDto
 import com.example.parkingsystemandroid.data.repository.AuthRepository
+import com.example.parkingsystemandroid.utils.TokenManager
 import kotlinx.coroutines.launch
 
 class AuthViewModel : ViewModel() {
@@ -37,6 +38,8 @@ class AuthViewModel : ViewModel() {
                 val response = authRepository.login(loginDto)
                 if (response != null) {
                     authResponse.postValue(AuthResponseState.Success(response))
+                    TokenManager.saveUserName(response.name)
+                    TokenManager.saveUserEmail(response.email)
                 } else {
                     authResponse.postValue(AuthResponseState.Error("Login failed"))
                 }

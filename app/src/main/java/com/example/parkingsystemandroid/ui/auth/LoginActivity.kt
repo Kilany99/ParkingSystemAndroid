@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         textViewRegister = findViewById(R.id.textViewRegister)
         textViewForgotPassword = findViewById(R.id.textViewForgotPassword)
 
-        TokenManager.init(this)
+        TokenManager.init(applicationContext)
 
         setupClickListeners()
         observeViewModel()

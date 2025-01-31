@@ -63,6 +63,8 @@ class CarAdapter(
     }
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            holder.bind(getItem(position))
+        }
     }
 }

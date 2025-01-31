@@ -2,8 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/carsFragment">
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.parkingsystemandroid.ui.HomeFragment"
+        android:label="Home">
+    </fragment>
     <!-- Cars Fragment -->
     <fragment
         android:id="@+id/carsFragment"

@@ -3,11 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-         <item
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        tools:ignore="HardcodedText"
+        />
+
+    <item
            android:id="@+id/carsFragment"
            android:title="My Cars"
            android:icon="@drawable/ic_car"
            tools:ignore="HardcodedText" />
+
+
     <!--
     <item
         android:id="@+id/reservationsFragment"
