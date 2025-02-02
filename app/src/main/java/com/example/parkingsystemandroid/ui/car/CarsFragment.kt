@@ -1,9 +1,7 @@
 package com.example.parkingsystemandroid.ui.car
 
 
-import CarRepository
-import CarViewModel
-import CarViewModelFactory
+
 
 import android.app.AlertDialog
 import android.os.Build
@@ -21,14 +19,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parkingsystemandroid.R
 import com.example.parkingsystemandroid.data.model.Car
-import com.example.parkingsystemandroid.data.model.dto.CarDto
-import com.example.parkingsystemandroid.data.model.dto.UpdateCarDto
+
 import com.example.parkingsystemandroid.data.network.RetrofitInstance
+import com.example.parkingsystemandroid.data.repository.CarRepository
 
 import com.google.android.material.snackbar.Snackbar
 import com.example.parkingsystemandroid.data.repository.Result
 import com.example.parkingsystemandroid.databinding.DialogAddCarBinding
 import com.example.parkingsystemandroid.databinding.FragmentCarsBinding
+import com.example.parkingsystemandroid.viewmodel.CarViewModel
+import com.example.parkingsystemandroid.viewmodel.CarViewModelFactory
 
 class CarsFragment : Fragment() {
     private var _binding: FragmentCarsBinding? = null

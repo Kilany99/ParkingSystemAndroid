@@ -38,6 +38,7 @@ class AuthViewModel : ViewModel() {
                 val response = authRepository.login(loginDto)
                 if (response != null) {
                     authResponse.postValue(AuthResponseState.Success(response))
+                    //save user name and email to be used across the app during login session
                     TokenManager.saveUserName(response.name)
                     TokenManager.saveUserEmail(response.email)
                 } else {

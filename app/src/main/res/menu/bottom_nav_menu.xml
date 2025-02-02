@@ -23,11 +23,11 @@
         android:title="Reservations"
         android:icon="@drawable/ic_reservation"
         tools:ignore="HardcodedText" />
-
+-->
     <item
         android:id="@+id/parkingZonesFragment"
-        android:title="Parking"
+        android:title="Parking Zones"
         android:icon="@drawable/ic_parking"
         tools:ignore="HardcodedText" />
--->
+
 </menu>

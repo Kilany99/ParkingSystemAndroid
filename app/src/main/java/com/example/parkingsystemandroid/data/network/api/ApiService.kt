@@ -47,7 +47,7 @@ interface ApiService {
     @GET("ParkingZone")
     suspend fun getAllZones(): Response<List<ParkingZoneDto>>
     @GET("ParkingZone/{id}/status")
-    suspend fun getZoneStatus(): Response<ParkingZoneDto>
+    suspend fun getZoneStatus(zoneId:Int): Response<ParkingZoneStatusDto>
     @GET("ParkingZone/{id}/available-spots")
     suspend fun getAvailableSpots(@Path("id") zoneId: Int): Response<List<ParkingSpotDto>>
 

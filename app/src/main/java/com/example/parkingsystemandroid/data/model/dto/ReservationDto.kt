@@ -12,7 +12,8 @@ data class ReservationDto(
     val qrCode: String,
     val status: Enums.SessionStatus,
     val car: CarDto,
-    val parkingSpotDto: ParkingSpotDto
+    val parkingSpot: ParkingSpotDto,
+    val parkingZone: ParkingZoneDto
 
 
 )

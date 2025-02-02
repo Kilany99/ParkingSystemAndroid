@@ -1,6 +1,7 @@
-<!-- res/navigation/main_nav_graph.xml -->
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/homeFragment">
 
@@ -14,7 +15,26 @@
         android:id="@+id/carsFragment"
         android:name="com.example.parkingsystemandroid.ui.car.CarsFragment"
         android:label="My Cars">
+    </fragment>
 
+    <!--Parking Zone Fragment-->
+    <fragment
+        android:id="@+id/parkingZonesFragment"
+        android:name="com.example.parkingsystemandroid.ui.parking.ParkingZonesFragment"
+        android:label="Parking Zones"
+        tools:layout="@layout/fragment_parking_zones">
+
+        <action
+            android:id="@+id/action_parkingZonesFragment_to_zoneDetailsFragment"
+            app:destination="@id/zoneDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/zoneDetailsFragment"
+        android:name="com.example.parkingsystemandroid.ui.parking.ZoneDetailsFragment"
+        android:label="Zone Details">
+        <argument
+            android:name="zoneId"
+            app:argType="integer" />
     </fragment>
 
 
