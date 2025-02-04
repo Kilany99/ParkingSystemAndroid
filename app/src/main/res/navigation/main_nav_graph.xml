@@ -36,6 +36,21 @@
             android:name="zoneId"
             app:argType="integer" />
     </fragment>
+    <!--Reservation Fragments-->
+
+    <fragment
+        android:id="@+id/reservationsFragment"
+        android:name="com.example.parkingsystemandroid.ui.reservation.ReservationsFragment"
+        android:label="Reservations">
+        <action
+            android:id="@+id/action_reservationsFragment_to_createReservationFragment"
+            app:destination="@id/createReservationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createReservationFragment"
+        android:name="com.example.parkingsystemandroid.ui.reservation.CreateReservationFragment"
+        android:label="Create Reservation" />
 
 
 </navigation>

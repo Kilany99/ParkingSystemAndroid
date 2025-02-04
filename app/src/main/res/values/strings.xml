@@ -4,4 +4,8 @@
     <string name="reserve_now">Reserve Parking Now</string>
     <string name="app_description">Manage your parking experience effortlessly with these features:\n\n• Real-time parking availability\n• Secure reservation system\n• Vehicle management\n• Reservation history tracking\n• Instant notifications</string>
     <string name="add_car" >Make sure to enter correct details since this data will be validated on parking zone entrance automatically and if it is not matching you cannot proceed! </string>
+    <string name="system_name" >Easy Park </string>
+    <string name="view_fee">Calculate Fee</string>
+    <string name="cancel">Cancel Reservation</string>
+    <string name="add_reservation">Add Reservation</string>
 </resources>

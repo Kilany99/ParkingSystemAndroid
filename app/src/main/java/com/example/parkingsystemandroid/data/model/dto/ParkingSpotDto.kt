@@ -8,5 +8,6 @@ data class ParkingSpotDto (
     val floor:Int,
     val spotStatus: Enums.SpotStatus,
     val spotType: Enums.SpotType,
-    val hourlyRate: Double
+    val reservation:ReservationDto,
+    val parkingZone: ParkingZoneDto,
 )
