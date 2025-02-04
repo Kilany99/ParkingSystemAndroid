@@ -17,8 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ParkingZoneViewModel @Inject constructor(
-    private val repository: ParkingZoneRepository,
-):ViewModel() {
+    private val repository: ParkingZoneRepository
+) : ViewModel()  {
 
     private val _zones = MutableLiveData<Result<List<ParkingZoneDto>>>()
     val zones: LiveData<Result<List<ParkingZoneDto>>> = _zones

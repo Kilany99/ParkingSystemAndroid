@@ -1,5 +1,7 @@
 package com.example.parkingsystemandroid.data.repository
 
+import android.util.Log
+import com.example.parkingsystemandroid.data.model.Enums
 import com.example.parkingsystemandroid.data.model.ParkingZone
 import com.example.parkingsystemandroid.data.model.dto.ParkingSpotDto
 import com.example.parkingsystemandroid.data.model.dto.ParkingZoneDto
@@ -39,7 +41,7 @@ class ParkingZoneRepository@Inject constructor( private val api: ApiService) {
     }
     suspend fun getAvailableSpots(zoneId: Int): Result<List<ParkingSpotDto>> {
         return try {
-            val response = api.getAvailableSpots(zoneId)
+            val response = api.getAvailableSpots(zoneId, Enums.SpotStatus.AVAILABLE)
             if (response.isSuccessful) {
                 Result.Success(response.body() ?: emptyList())
             } else {

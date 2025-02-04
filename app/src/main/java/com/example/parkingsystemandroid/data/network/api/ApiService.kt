@@ -47,9 +47,11 @@ interface ApiService {
     @GET("ParkingZone")
     suspend fun getAllZones(): Response<List<ParkingZoneDto>>
     @GET("ParkingZone/{id}/status")
-    suspend fun getZoneStatus(zoneId:Int): Response<ParkingZoneStatusDto>
+    suspend fun getZoneStatus(@Path("id")zoneId:Int): Response<ParkingZoneStatusDto>
     @GET("ParkingZone/{id}/available-spots")
-    suspend fun getAvailableSpots(@Path("id") zoneId: Int): Response<List<ParkingSpotDto>>
+    suspend fun getAvailableSpots(@Path("id") zoneId: Int,@Path("status") status: Enums.SpotStatus): Response<List<ParkingSpotDto>>
+    @GET("ParkingZone/{id}/all-spots")
+    suspend fun getAllSpots(@Path("id") zoneId: Int): Response<List<ParkingSpotDto>>
 
     // ----- ReservationController -----
 

@@ -16,6 +16,7 @@ import com.example.parkingsystemandroid.viewmodel.ParkingZoneViewModel
 import com.example.parkingsystemandroid.data.repository.Result
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class ParkingZonesFragment : Fragment() {
 

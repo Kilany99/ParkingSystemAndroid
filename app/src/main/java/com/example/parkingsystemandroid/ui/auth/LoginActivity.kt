@@ -23,6 +23,7 @@ import com.example.parkingsystemandroid.viewmodel.AuthResponseState
 import com.example.parkingsystemandroid.viewmodel.AuthViewModel
 
 
+@Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: AuthViewModel

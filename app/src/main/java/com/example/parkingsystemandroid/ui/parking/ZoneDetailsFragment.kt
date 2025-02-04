@@ -15,12 +15,22 @@ import com.example.parkingsystemandroid.databinding.FragmentZoneDetailsBinding
 import com.example.parkingsystemandroid.viewmodel.ParkingZoneViewModel
 import com.example.parkingsystemandroid.data.repository.Result
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ZoneDetailsFragment : Fragment() {
     private var _binding: FragmentZoneDetailsBinding? = null
     private val binding get() = _binding!!
     private val args: ZoneDetailsFragmentArgs by navArgs()
     private val viewModel: ParkingZoneViewModel by viewModels()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentZoneDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +71,10 @@ class ZoneDetailsFragment : Fragment() {
             )
 
             distributionTextView.text = buildString {
+                append("Available: ${status.distribution.available}\n")
+                append("Occupied: ${status.distribution.occupied}\n")
+                append("Reserved: ${status.distribution.reserved}\n")
+                append("Maintenance: ${status.distribution.maintenance}\n\n")
                 append("Available by floor:\n")
                 status.distribution.availableByFloor.forEach { (floor, spots) ->
                     append("Floor $floor: $spots spots\n")
