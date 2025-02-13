@@ -20,7 +20,7 @@ import javax.net.ssl.X509TrustManager
 
 object RetrofitInstance {
 
-    private const val BASE_URL = "https://192.168.43.144:45455/api/"
+    private const val BASE_URL = "https://192.168.43.144:45456/api/"
 
     // Logging interceptor for debugging purposes
     private val loggingInterceptor = HttpLoggingInterceptor().apply {

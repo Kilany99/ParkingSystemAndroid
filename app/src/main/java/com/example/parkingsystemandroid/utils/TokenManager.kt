@@ -3,9 +3,11 @@
 package com.example.parkingsystemandroid.utils
 
 import android.content.Context
+import android.util.Base64
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.example.parkingsystemandroid.ParkingSystemApplication
+import org.json.JSONObject
 
 object TokenManager {
     private const val PREFS_FILENAME = "secure_prefs"
@@ -67,7 +69,18 @@ object TokenManager {
     var token: String?
         get() = prefs.getString(TOKEN_KEY, null)
         set(value) = prefs.edit().putString(TOKEN_KEY, value).apply()
-
+    var userRole: String? = null
+        get() {
+            token?.let {
+                val parts = it.split(".") // JWT has 3 parts: Header, Payload, Signature
+                if (parts.size > 1) {
+                    val payload = String(Base64.decode(parts[1], Base64.URL_SAFE))
+                    val json = JSONObject(payload)
+                    return json.optString("role", null) // Extract role from JWT
+                }
+            }
+            return null
+        }
     fun clearToken() {
         prefs.edit().remove(TOKEN_KEY).apply()
     }

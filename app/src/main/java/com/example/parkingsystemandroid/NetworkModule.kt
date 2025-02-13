@@ -25,7 +25,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://192.168.43.144:45455/api/")
+            .baseUrl("https://192.168.43.144:45456/api/")
             .client(unsafeOkHttpClient()) // Use the insecure client
             .addConverterFactory(GsonConverterFactory.create())
             .build()
